@@ -1,0 +1,71 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "6f8910fc-84ff-40c1-be6d-df64e41008b9",
+  "location" : "file:///tmp/iceberg/warehouse/default_database/all_users_sink",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1636382912432,
+  "last-column-id" : 7,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "identifier-field-ids" : [ 1, 2, 3 ],
+    "fields" : [ {
+      "id" : 1,
+      "name" : "database_name",
+      "required" : true,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "table_name",
+      "required" : true,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "id",
+      "required" : true,
+      "type" : "decimal(20, 0)"
+    }, {
+      "id" : 4,
+      "name" : "name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "address",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "phone_number",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "email",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "connector" : "iceberg",
+    "catalog-type" : "hadoop",
+    "warehouse" : "file:///tmp/iceberg/warehouse",
+    "catalog-name" : "iceberg_catalog"
+  },
+  "current-snapshot-id" : -1,
+  "snapshots" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

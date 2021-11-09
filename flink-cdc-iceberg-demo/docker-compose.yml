@@ -1,6 +1,7 @@
 version: '2.1'
 services:
   sql-client:
+    user: flink:flink
     image: yuxialuo/flink-sql-client:1.13.2.v1 
     depends_on:
       - jobmanager
@@ -9,8 +10,9 @@ services:
       FLINK_JOBMANAGER_HOST: jobmanager
       MYSQL_HOST: mysql
     volumes:
-      - /Users/luoyuxia/demo/iceberg:/home/iceberg
+      - shared-tmpfs:/tmp/iceberg
   jobmanager:
+    user: flink:flink
     image: flink:1.13.2-scala_2.11
     ports:
       - "8081:8081"
@@ -20,8 +22,9 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
     volumes:
-      - /Users/luoyuxia/demo/iceberg:/home/iceberg    
+      - shared-tmpfs:/tmp/iceberg
   taskmanager:
+    user: flink:flink
     image: flink:1.13.2-scala_2.11
     depends_on:
       - jobmanager
@@ -32,7 +35,7 @@ services:
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2
     volumes:
-      - /Users/luoyuxia/demo/iceberg:/home/iceberg    
+      - shared-tmpfs:/tmp/iceberg
   mysql:
     image: debezium/example-mysql:1.1
     ports:
@@ -41,3 +44,10 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_USER=mysqluser
       - MYSQL_PASSWORD=mysqlpw
+
+volumes:
+  shared-tmpfs:
+    driver: local
+    driver_opts:
+      type: "tmpfs"
+      device: "tmpfs"
