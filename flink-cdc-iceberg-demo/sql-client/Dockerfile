@@ -2,6 +2,9 @@ FROM maven:3.6-jdk-8-slim AS builder
 
 FROM flink:1.13.2-scala_2.11
 
+RUN apt-get update
+RUN apt install tree
+
 # Copy sql-client script
 COPY bin/* /opt/sql-client/
 RUN mkdir -p /opt/sql-client/lib
